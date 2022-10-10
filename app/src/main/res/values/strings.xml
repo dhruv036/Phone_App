@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Content Provider Demo</string>
+    <array name="type">
+        <item>Home</item>
+        <item>Mobile</item>
+        <item>Work</item>
+        <item>Other</item>
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phone_app">Phone App</string>
 </resources>

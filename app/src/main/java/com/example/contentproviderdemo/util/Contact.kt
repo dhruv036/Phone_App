@@ -1,4 +1,4 @@
-package com.example.contentproviderdemo
+package com.example.contentproviderdemo.util
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

@@ -1,34 +1,30 @@
-package com.example.contentproviderdemo
+package com.example.contentproviderdemo.view
 
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.example.contentproviderdemo.R
+import com.example.contentproviderdemo.util.Contact
+import java.io.Serializable
+import java.util.*
+
 
 class Adapter(var list: MutableList<Contact>, var context : Context) : RecyclerView.Adapter<Adapter.ContactViewHolder>() {
 
-    var mylist = list
-
-
 
     class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var name = itemView.findViewById<TextView>( R.id.name)
+        var name = itemView.findViewById<TextView>(R.id.name)
         var main = itemView.findViewById<CardView>(R.id.childMain)
         var image = itemView.findViewById<ImageView>(R.id.image)
         var text = itemView.findViewById<TextView>(R.id.head)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
@@ -37,14 +33,7 @@ class Adapter(var list: MutableList<Contact>, var context : Context) : RecyclerV
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-
-//        mylist.get(position).address!!.let {
-//            holder.address.visibility  = View.VISIBLE
-//            for (x in it){
-//                holder.address.append("Address: "+x.value)
-//            }
-//        }
-        var current = mylist.get(position)
+        var current = list.get(position)
         current.name!!.let {
             holder.name.visibility  = View.VISIBLE
             var index = it.indexOf(" ")
@@ -54,12 +43,12 @@ class Adapter(var list: MutableList<Contact>, var context : Context) : RecyclerV
                 holder.name.setText(it)
             }
         }
-
         holder.main.setOnClickListener(View.OnClickListener {
             var bundle =Bundle()
-            bundle?.putParcelable("contact",current)
-            var i = Intent(context.applicationContext,ShowDetailActivity::class.java)
+            bundle?.putSerializable("contact",list as Serializable)
+            var i = Intent(context.applicationContext, ShowDetailActivity::class.java)
             i.putExtra("user",bundle)
+            i.putExtra("position",position)
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(i)
         })
@@ -67,17 +56,18 @@ class Adapter(var list: MutableList<Contact>, var context : Context) : RecyclerV
         if(!current.image.equals("") && current.image != null) {
             holder.image.visibility = View.VISIBLE
             var image :Bitmap? = null
-            image = BitmapFactory.decodeFile(mylist.get(position).image)
+            image = BitmapFactory.decodeFile(list.get(position).image)
             if(image != null){
                 holder.image.setImageBitmap(image)
                 holder.text.visibility = View.GONE
             }else{
+                holder.text.apply{
+                    setText(current.name!!.subSequence(0,1).toString().uppercase())
+                    visibility = View.VISIBLE
+                }
                 holder.image.setImageDrawable(context.getDrawable(R.drawable.round))
-                holder.text.setText(current.name!!.subSequence(0,1).toString().uppercase())
-                holder.text.visibility = View.VISIBLE
             }
         }
-
     }
 
     override fun getItemCount(): Int {

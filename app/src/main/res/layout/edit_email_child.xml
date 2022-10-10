@@ -5,16 +5,17 @@
     android:weightSum="1">
 
     <TextView
-        android:id="@+id/phonelabel"
+        android:id="@+id/emaillabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
         android:fontFamily="@font/lato_bold"
+        android:text=""
         android:layout_marginTop="10dp"
         />
 
     <EditText
-        android:id="@+id/phonenew"
+        android:id="@+id/emailnew"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -23,8 +24,9 @@
         android:layout_weight="0.8"
         android:background="@drawable/edit_box"
         android:fontFamily="@font/lato_bold"
-        android:inputType="number"
+        android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
+        android:text=""
         android:textColor="#636363"
         android:textSize="18sp" />
     <ImageView
@@ -34,4 +36,4 @@
         android:layout_marginTop="1dp"
         android:src="@drawable/ic_baseline_minimize_24"
         />
-    </LinearLayout>
+</LinearLayout>

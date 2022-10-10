@@ -1,4 +1,4 @@
-package com.example.contentproviderdemo
+package com.example.contentproviderdemo.view
 
 import android.content.Context
 import android.content.Intent
@@ -6,40 +6,34 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.example.contentproviderdemo.databinding.ActivityShowDetailBinding
-class ShowDetailActivity : AppCompatActivity() {
-    lateinit var binding:ActivityShowDetailBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityShowDetailBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+import android.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import com.example.contentproviderdemo.R
+import com.example.contentproviderdemo.databinding.FragmentShowContactBinding
+import com.example.contentproviderdemo.util.Contact
 
-        var bundle: Bundle? = intent.getBundleExtra("user")
+class ShowContactFragment(var contact: Contact) : Fragment() {
 
-        setdata(bundle!!)
+    private lateinit var binding: FragmentShowContactBinding
 
-        binding.editBt.setOnClickListener(View.OnClickListener {
-            var i  = Intent(this@ShowDetailActivity,ContactEditActvity::class.java)
-            i.putExtra("data",bundle)
-            startActivity(i)
-        })
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding= FragmentShowContactBinding.inflate(layoutInflater,container,false)
+        setdata(contact)
+        return binding.root
     }
-
-    fun setdata(data : Bundle){
-        var data1 :Contact = data.get("contact") as Contact
-        setName(data1.name)
-        setNumber(data1)
-        setAddress(data1)
-        setImage(data1)
-        setEmail(data1)
+    fun setdata(contact: Contact){
+        setName(contact.name)
+        setNumber(contact)
+        setAddress(contact)
+        setImage(contact)
+        setEmail(contact)
     }
-
     fun setName(data1 : String?){
         binding.nameEdt.setText(data1)
     }
@@ -49,7 +43,7 @@ class ShowDetailActivity : AppCompatActivity() {
             binding.pl.visibility = View.VISIBLE
             for ((key,value) in data1.number!!){
                 binding.phoneEdt.apply {
-                    val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val inflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     val rowView: View = inflater.inflate(R.layout.phone_child, null)
                     binding.phoneEdt!!.addView(rowView,binding.phoneEdt!!.childCount)
                     visibility = View.VISIBLE
@@ -84,7 +78,7 @@ class ShowDetailActivity : AppCompatActivity() {
             binding.el.visibility = View.VISIBLE
             for ((key,value) in data1.email!!){
                 binding.emailEdt.apply {
-                    val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val inflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     val rowView: View = inflater.inflate(R.layout.email_child, null)
                     binding.emailEdt!!.addView(rowView,binding.emailEdt!!.childCount)
                     visibility = View.VISIBLE
@@ -100,10 +94,10 @@ class ShowDetailActivity : AppCompatActivity() {
                             }
                             startActivity(Intent.createChooser(intent,"Choose a Email Client"))
                         }catch (e :Exception){
+                            println(e.localizedMessage)
                         }
                     })
                     count++
-
                 }
             }
         }
@@ -114,7 +108,7 @@ class ShowDetailActivity : AppCompatActivity() {
             binding.al.visibility = View.VISIBLE
             for ((key,value) in data1.address!!){
                 binding.addressEdt.apply {
-                    val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                    val inflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                     val rowView: View = inflater.inflate(R.layout.address_child, null)
                     binding.addressEdt!!.addView(rowView,binding.addressEdt!!.childCount)
                     visibility = View.VISIBLE
@@ -128,7 +122,6 @@ class ShowDetailActivity : AppCompatActivity() {
     }
     fun setImage(data1 : Contact){
         if(!data1.image.equals("") && data1.image != null) {
-//            Toast.makeText(context,current.name, Toast.LENGTH_SHORT).show()
             binding.myImg.visibility = View.VISIBLE
             var image : Bitmap? = null
             image = BitmapFactory.decodeFile(data1.image)
@@ -136,10 +129,12 @@ class ShowDetailActivity : AppCompatActivity() {
                 binding.myImg.setImageBitmap(image)
             }else{
                 binding.myImg.apply {
-                    this.setImageDrawable(getDrawable(R.drawable.round))
+                    this.setImageDrawable(activity?.getDrawable(R.drawable.round))
                 }
-                binding.nameLabel.setText(data1.name!!.subSequence(0,1).toString().toUpperCase())
-                binding.nameLabel.visibility = View.VISIBLE
+                binding.nameLabel.apply {
+                    setText(data1.name!!.subSequence(0,1).toString().toUpperCase())
+                    visibility = View.VISIBLE
+                }
             }
         }
     }

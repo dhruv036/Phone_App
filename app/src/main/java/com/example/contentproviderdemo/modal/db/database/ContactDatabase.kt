@@ -1,14 +1,14 @@
-package com.example.contentproviderdemo.db.database
+package com.example.contentproviderdemo.modal.db.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.contentproviderdemo.db.dao.ContactDao
-import com.example.contentproviderdemo.db.entity.AddressEntity
-import com.example.contentproviderdemo.db.entity.ContactEntity
-import com.example.contentproviderdemo.db.entity.EmailEntity
-import com.example.contentproviderdemo.db.entity.PhoneNumberEntity
+import com.example.contentproviderdemo.modal.db.dao.ContactDao
+import com.example.contentproviderdemo.modal.db.entity.AddressEntity
+import com.example.contentproviderdemo.modal.db.entity.ContactEntity
+import com.example.contentproviderdemo.modal.db.entity.EmailEntity
+import com.example.contentproviderdemo.modal.db.entity.PhoneNumberEntity
 
 
 @Database( entities = [ContactEntity::class, PhoneNumberEntity::class, EmailEntity::class, AddressEntity::class] , version = 1)

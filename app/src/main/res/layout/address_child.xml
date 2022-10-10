@@ -10,8 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.8"
         android:fontFamily="@font/lato_bold"
-        android:layout_marginLeft="10dp"
-
         />
 
     <TextView
@@ -19,11 +17,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:paddingVertical="5dp"
         android:layout_weight="0.2"
         android:background="@drawable/edit_box"
         android:fontFamily="@font/lato_bold"
         android:gravity="center_vertical"
-        android:paddingVertical="3dp"
         android:paddingLeft="10dp"
         android:textColor="#636363"
         android:textSize="18sp" />

@@ -1,4 +1,4 @@
-package com.example.contentproviderdemo.db.entity
+package com.example.contentproviderdemo.modal.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

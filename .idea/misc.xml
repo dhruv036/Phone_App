@@ -8,14 +8,22 @@
         <entry key="..\:/ContentProviderDemo/app/src/main/res/drawable/round.xml" value="0.141" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/drawable/roundbox.xml" value="0.18" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/drawable/roundbox2.xml" value="0.141" />
-        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/activity_contact_edit.xml" value="0.1675929884566054" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/activity_contact_edit.xml" value="0.2" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/activity_main.xml" value="0.20079260237780713" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/activity_show_detail.xml" value="0.2" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/addcontactfragment.xml" value="0.22" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/addfragmenttoolbar.xml" value="0.25" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/address_child.xml" value="0.21" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/child_layout.xml" value="0.25" />
-        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/edit_phone_child.xml" value="0.25" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/edit_address_child.xml" value="0.16673792218896966" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/edit_email_child.xml" value="0.1675929884566054" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/edit_phone_child.xml" value="0.22" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/email_child.xml" value="0.22" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/fragment_show_contact.xml" value="0.16417272338606242" />
         <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/phone_child.xml" value="0.22" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/layout/showcontact_fragment.xml" value="0.1633176571184267" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/menu/add_fragement_menu.xml" value="0.1675929884566054" />
+        <entry key="..\:/ContentProviderDemo/app/src/main/res/menu/edit_contact_menu.xml" value="0.1675929884566054" />
       </map>
     </option>
   </component>

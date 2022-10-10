@@ -12,14 +12,13 @@
         android:text="Home"
         android:layout_weight="0.27"
         android:fontFamily="@font/lato_bold"
-        android:layout_marginLeft="10dp"
-
         />
     <TextView
         android:id="@+id/phone"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
+        android:layout_height="wrap_content"
         android:textColor="#636363"
+        android:paddingVertical="5dp"
         android:background="@drawable/edit_box"
         android:fontFamily="@font/lato_bold"
         android:paddingLeft="10dp"

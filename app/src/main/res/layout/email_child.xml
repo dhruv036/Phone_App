@@ -11,8 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.4"
         android:fontFamily="@font/lato_bold"
-        android:layout_marginLeft="10dp"
-
         />
 
     <TextView
@@ -21,10 +19,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_weight="0.15"
+        android:autoSizeTextType="uniform"
         android:background="@drawable/edit_box"
         android:fontFamily="@font/lato_bold"
         android:gravity="center_vertical"
-        android:paddingVertical="3dp"
+        android:inputType="textEmailAddress"
+        android:paddingVertical="5dp"
         android:paddingLeft="10dp"
         android:textColor="#636363"
         android:textSize="18sp" />
